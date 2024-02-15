@@ -11,8 +11,7 @@ def get_traveler_location(traveler):
     traveler_destination_index = get_destination_index(traveler_destination)
     return traveler_destination_index
 
-print(get_destination_index("Los Angeles, USA")) 
-print(get_destination_index("Paris, France"))  
+print(get_destination_index("Los Angeles, USA"))
 
 test_destination_index = get_traveler_location(test_traveler)
 
