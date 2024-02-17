@@ -42,7 +42,7 @@ def find_attractions(destination, interests):
   attractions_with_interest = []
   for attraction in attractions_in_city:
     possible_attraction = attraction
-    #? en cas où nous aurions besoin d'utiliser le nom complet de l'attraction
+    #? Au cas où nous aurions besoin d'utiliser le nom complet de l'attraction
     attraction_name = possible_attraction[0] 
     attraction_tags = possible_attraction[1]
     for interest in interests:
