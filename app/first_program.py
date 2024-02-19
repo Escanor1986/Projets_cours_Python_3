@@ -1,3 +1,10 @@
+#! ###############################################################################################################################
+
+#! First Program in Python using basic functionalities 
+
+#! ###############################################################################################################################
+
+
 destinations = ["Paris, France", "Shanghai, China", "Los Angeles, USA", "São Paulo, Brazil", "Cairo, Egypt"]
 
 test_traveler = ['Erin Wilkes', 'Shanghai, China', ['historical site', 'art']]
@@ -67,4 +74,36 @@ def get_attractions_for_traveler(traveler):
   return interests_string
 
 smills_france = get_attractions_for_traveler(['Dereck Smill', 'Paris, France', ['monument']])
-print(smills_france)
+# print(smills_france)
+
+#! ###############################################################################################################################
+
+#! String method exo using .strip(), .split(), .format(), .find(), .upper()...
+
+#! ###############################################################################################################################
+
+highlighted_poems = "Afterimages:Audre Lorde:1997,  The Shadow:William Carlos Williams:1915, Ecstasy:Gabriela Mistral:1925,   Georgia Dusk:Jean Toomer:1923,   Parting Before Daybreak:An Qi:2014, The Untold Want:Walt Whitman:1871, Mr. Grumpledump's Song:Shel Silverstein:2004, Angel Sound Mexico City:Carmen Boullosa:2013, In Love:Kamala Suraiyya:1965, Dream Variations:Langston Hughes:1994, Dreamwood:Adrienne Rich:1987"
+
+highlighted_poems_list = highlighted_poems.split(",")
+highlighted_poems_stripped = [elem.strip() for elem in highlighted_poems_list]
+highlighted_poems_details = [elem.split(":") for elem in highlighted_poems_stripped]
+print(highlighted_poems_details)
+
+titles = []
+poets = []
+dates = []
+
+for poem_details in highlighted_poems_details:
+    for index, detail in enumerate(poem_details):
+        if index == 0:
+            titles.append(detail)
+        elif index == 1:
+            poets.append(detail)
+        elif index == 2:
+            dates.append(detail)
+        else:
+          print("You seem to have some unexpected behaviour with your app !")
+print(titles, poets, dates)
+
+for i in range(len(titles)):
+    print("The poem {} was published by {} in {}".format(titles[i], poets[i], dates[i]))
