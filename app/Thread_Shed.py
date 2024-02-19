@@ -107,3 +107,63 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 
 #------------------------------------------------
 
+daily_sales_replaced = daily_sales.replace(";,;", "-")
+daily_transactions = daily_sales_replaced.split(",")
+daily_transactions_split = [elem.split("-") for elem in daily_transactions]
+
+transactions_clean = []
+
+for list in daily_transactions_split:
+  transactions_clean.append([elem.strip() for elem in list])
+
+customers = []
+sales = []
+thread_sold = []
+
+
+for list in transactions_clean:
+  for index, elem in enumerate(list):
+    if index == 0:
+      customers.append(elem)
+    elif index == 1:
+      sales.append(elem)
+    elif index == 2:
+      thread_sold.append(elem)
+    else:
+      break
+
+total_sales = 0
+
+for sale in sales:
+  total_sales += float(sale.strip("$"))
+
+thread_sold_split = []
+
+for colors in thread_sold:
+  if colors.find("&") == -1:
+    thread_sold_split.append(colors)
+  else:
+    temp_list = colors.split("&")
+    for color in temp_list:
+      thread_sold_split.append(color)
+
+def color_count(color):
+  count = 0
+  for elem in thread_sold_split:
+    if elem == color:
+      count += 1
+  return count
+
+print(color_count('white'))
+
+colors = []
+
+for color in thread_sold_split:
+  if color in colors:
+    continue
+  else:
+    colors.append(color)
+print(colors)
+  
+for color in colors:
+    print("Thread sold today - {}: {}".format(color, color_count(color)))
